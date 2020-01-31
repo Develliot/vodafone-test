@@ -6,6 +6,8 @@ In the project directory, you can run:
 
 Launches the test runner.
 
+there is no way to fake and speed up the timers using await async in jest (yet) so tests are slow and I probably wouldn't want to do anything like this in production
+
 ## How to use
 
 **Helper function tech test**
