@@ -3,6 +3,17 @@ const getProcessingPage = processingModule.getProcessingPage;
 
 describe('getProcessingPage', () => {
     // single item tests
+
+    it('throws error without status', async () => {
+        let message = false;
+        try {
+            await getProcessingPage([{}]);
+        } catch (e) {
+            message = e.message;
+        }
+        expect(message).toStrictEqual('status missing');
+    });
+
     it('works for success', async () => {
         expect(await getProcessingPage([{ status: 'success' }])).toStrictEqual({
             title: 'Order complete',

@@ -36,9 +36,12 @@
 
 // This assumes that we put an array in and want an object out so we could use a reducer
 
-function messagePromiseFromStateObject(stateObject) {
+const messagePromiseFromStateObject = stateObject => {
     return new Promise((resolve, reject) => {
         const status = stateObject.status;
+        if (!status) {
+            reject(new Error('status missing'));
+        }
         if (status === 'error') {
             const errorCode = stateObject.errorCode || null;
             switch (errorCode) {
@@ -64,7 +67,7 @@ function messagePromiseFromStateObject(stateObject) {
             }, 2000);
         }
     });
-}
+};
 
 /**
  * Gets the processing page
